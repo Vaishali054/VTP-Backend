@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import {emailValidation, nameValidation, passwordValidation} from "../validations/update.js";
 
 export const updateProfile= async(req,res)=>{
     const { id: userId } = req.body.user;
@@ -12,10 +13,48 @@ export const updateProfile= async(req,res)=>{
                 message: "User not found"
             });
         }
+
+        const updateFields = {};
+
+        // Check and validate name
+        if (req.body.name) {
+            const nameValidationResult = nameValidation.safeParse(req.body.name);
+            if (!nameValidationResult.success) {
+                return res.status(400).json({
+                    message: nameValidationResult.error.issues[0].message,
+                    error: nameValidationResult.error,
+                });
+            }
+            updateFields.name = nameValidationResult.data;
+        }
+
+        // Check and validate email
+        if (req.body.email_id) {
+            const emailValidationResult = emailValidation.safeParse(req.body.email);
+            if (!emailValidationResult.success) {
+                return res.status(400).json({
+                    message: emailValidationResult.error.issues[0].message,
+                    error: emailValidationResult.error,
+                });
+            }
+            updateFields.email = emailValidationResult.data;
+        }
+
+        // Check and validate password
+        if (req.body.password) {
+            const passwordValidationResult = passwordValidation.safeParse(req.body.password);
+            if (!passwordValidationResult.success) {
+                return res.status(400).json({
+                    message: passwordValidationResult.error.issues[0].message,
+                    error: passwordValidationResult.error,
+                });
+            }
+            updateFields.password = passwordValidationResult.data;
+        }
         
 
         const updatedUser= await User.findByIdAndUpdate(userId, {
-            $set : isValidData.data
+            $set : updateFields
         },{new : true});
 
         return res.status(200).json({
