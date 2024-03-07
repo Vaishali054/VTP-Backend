@@ -19,38 +19,38 @@ export const updateProfile= async(req,res)=>{
 
         // Check and validate name
         if (req.body.name) {
-            const nameValidationResult = nameValidation.safeParse(req.body.name);
+            const nameValidationResult = nameValidation.safeParse(req.body);
             if (!nameValidationResult.success) {
                 return res.status(400).json({
                     message: nameValidationResult.error.issues[0].message,
                     error: nameValidationResult.error,
                 });
             }
-            updateFields.name = nameValidationResult.data;
+            updateFields.name = req.body.name;
         }
 
         // Check and validate email
         if (req.body.email_id) {
-            const emailValidationResult = emailValidation.safeParse(req.body.email);
+            const emailValidationResult = emailValidation.safeParse(req.body);
             if (!emailValidationResult.success) {
                 return res.status(400).json({
                     message: emailValidationResult.error.issues[0].message,
                     error: emailValidationResult.error,
                 });
             }
-            updateFields.email = emailValidationResult.data;
+            updateFields.email_id = req.body.email_id;
         }
 
         // Check and validate password
         if (req.body.password) {
-            const passwordValidationResult = passwordValidation.safeParse(req.body.password);
+            const passwordValidationResult = passwordValidation.safeParse(req.body);
             if (!passwordValidationResult.success) {
                 return res.status(400).json({
                     message: passwordValidationResult.error.issues[0].message,
                     error: passwordValidationResult.error,
                 });
             }
-            updateFields.password = await bcrypt.hash(passwordValidationResult.data, 11);
+            updateFields.password = await bcrypt.hash(req.body.password, 11);
         }
         
 
@@ -63,6 +63,7 @@ export const updateProfile= async(req,res)=>{
             user: updatedUser
         });
     }catch(error){
+        console.log(error)
         return res.status(500).json({
             message: "Internal server error"
         });
