@@ -1,19 +1,7 @@
 import User from "../models/User.js";
-import {updateDetail} from "../validations/update.js";
 
 export const updateProfile= async(req,res)=>{
     const { id: userId } = req.body.user;
-
-    const isValidData=updateDetail.safeParse(req.body);
-
-    if(!isValidData.success){
-        return res.status(400).json({
-            message: isValidData.error.issues[0].message,
-            error: isValidData.error,
-        });
-    }
-
-    console.log(isValidData.data)
 
     try{
 
