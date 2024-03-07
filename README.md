@@ -12,5 +12,5 @@
     ```bash
     $ yarn install
     $ yarn init
-    $ node server.js
+    $ yarn start
     ```
