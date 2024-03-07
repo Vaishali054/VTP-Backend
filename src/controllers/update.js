@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import {emailValidation, nameValidation, passwordValidation} from "../validations/update.js";
+import bcrypt from "bcrypt";
 
 export const updateProfile= async(req,res)=>{
     const { id: userId } = req.body.user;
@@ -49,7 +50,7 @@ export const updateProfile= async(req,res)=>{
                     error: passwordValidationResult.error,
                 });
             }
-            updateFields.password = passwordValidationResult.data;
+            updateFields.password = await bcrypt.hash(passwordValidationResult.data, 11);
         }
         
 
