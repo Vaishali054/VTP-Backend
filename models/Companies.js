@@ -1,29 +1,29 @@
 const mongoose = require('mongoose');
 
 const CompanySchema = new mongoose.Schema({
-    max_stock_price: { 
+    Max_Stock_Price: { 
         type: Number, 
         required: true 
     },
-    min_stock_price: { 
+    Min_Stock_Price: { 
         type: Number, 
         required: true 
     },
-    symbol: { 
+    Symbol: { 
         type: String, 
         required: true, 
         unique: true 
     },
-    company_Id: { 
+    Company_Id: { 
         type: mongoose.Schema.Types.ObjectId, 
         unique: true,
         required: true 
     },
-    company_name: { 
+    Name: { 
         type: String, 
         required: true 
     },
-    current_Price: { 
+    Current_Price: { 
         type: Number, 
         required: true 
     }
