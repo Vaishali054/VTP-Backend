@@ -8,7 +8,7 @@ const UserModel = new mongoose.Schema({
         unique: true,
         trim: true,
     },
-    UserName: {
+    name: {
         type: String,
         required: true,
     },
@@ -18,17 +18,11 @@ const UserModel = new mongoose.Schema({
         unique:true,
         trim: true,
     },
-    Phone_no: {
-        type: String,
-        required: true,
-        unique:true,
-        trim: true,
-    },
     password: {
         type: String,
         required: true
     },
-    current_Balance: {
+    current_balance: {
         type: Number,
         default: 100000,
         required: true
