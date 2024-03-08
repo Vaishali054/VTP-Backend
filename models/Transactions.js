@@ -1,31 +1,31 @@
 const mongoose = require('mongoose');
 
 const TransactionSchema = new mongoose.Schema({
-    user_Id: { 
+    User_Id: { 
         type: mongoose.Schema.Types.ObjectId, 
         required: true, 
         ref: 'Users' 
     },
-    company_Id: { 
+    Company_Id: { 
         type: mongoose.Schema.Types.ObjectId, 
         required: true, 
         ref: 'Companies' 
     },
-    transaction_Id: { 
+    Transaction_Id: { 
         type: mongoose.Schema.Types.ObjectId, 
         unique: true,
         required: true 
     },
-    price: { 
+    Price: { 
         type: Number, 
         required: true 
     },
-    quantity: { 
+    Quantity: { 
         type: Number, 
         required: true, 
         min: 0 
     },
-    transaction_type: {
+    Transaction_type: {
         type: String,
         enum: ['Buy', 'Sell'],
         req: true
