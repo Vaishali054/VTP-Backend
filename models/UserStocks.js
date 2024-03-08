@@ -11,7 +11,7 @@ const UserStocksSchema = new mongoose.Schema({
         required: true, 
         ref: 'Company' 
     },
-    numberOfStocks: { type: Number, 
+    number_of_stocks: { type: Number, 
         required: true, 
         min: 0
     }
