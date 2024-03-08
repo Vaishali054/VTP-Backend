@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const UserModel = new mongoose.Schema({
 
-    user_Id:{
+    User_Id:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         unique: true,
