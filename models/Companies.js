@@ -28,7 +28,8 @@ const CompanySchema = new mongoose.Schema({
         required: true 
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    collection: 'Portfolio'
 });
 
 module.exports = mongoose.model('Company', CompanySchema);
