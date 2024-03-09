@@ -12,7 +12,8 @@ const PortfolioSchema = new mongoose.Schema({
         required: true 
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    collection: 'Portfolio'
 });
 
 module.exports = mongoose.model('Portfolio', PortfolioSchema);
