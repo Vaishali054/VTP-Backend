@@ -16,7 +16,8 @@ const UserStocksSchema = new mongoose.Schema({
         min: 0
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    collection: 'UserStocks'
 });
 
 module.exports = mongoose.model('UserStocks', UserStocksSchema);
