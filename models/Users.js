@@ -33,7 +33,8 @@ const UserModel = new mongoose.Schema({
         default: 'active',
     },
 },{
-    timestamps : true
+    timestamps : true,
+    collection: 'Users'
 })
 
 
