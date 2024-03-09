@@ -8,17 +8,11 @@ const UserModel = new mongoose.Schema({
         unique: true,
         trim: true,
     },
-    UserName: {
+    name: {
         type: String,
         required: true,
     },
     email_id:{
-        type: String,
-        required: true,
-        unique:true,
-        trim: true,
-    },
-    Phone_no: {
         type: String,
         required: true,
         unique:true,
@@ -35,13 +29,12 @@ const UserModel = new mongoose.Schema({
     },
     account_status:{
         type: String,
-        enum: ['active', 'suspended'],
+        enum: ['active', 'deleted'],
         default: 'active',
     },
 },{
     timestamps : true,
     collection: 'Users'
 })
-
 
 module.exports = mongoose.model('Users', UserModel)
