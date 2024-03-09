@@ -12,7 +12,8 @@ const WatchlistSchema = new mongoose.Schema({
         ref: "Users" 
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    collection: 'WatchList'
 });
 
 module.exports = mongoose.model('WatchList', WatchlistSchema);
