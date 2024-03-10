@@ -75,6 +75,26 @@ export const updateProfile= async(req,res)=>{
     }
 
 };
+export const me = async (req, res) => {
+    const { id: userId, name, email_id } = req.body.user;
+
+    try {
+        
+        return res.status(200).json({
+            user: {
+                id: userId,
+                name: name,
+                email_id: email_id
+            }
+        });
+    } catch(error) {
+        console.log(error);
+        return res.status(500).json({
+            message: "Internal server error"
+        });
+    }
+};
+
 
 export const deleteProfile=async(req,res)=>{
     console.log(req.body)
