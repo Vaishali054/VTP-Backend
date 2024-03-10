@@ -115,6 +115,7 @@ db.Transaction.insertMany([
         Company_Id:getRandomCompanyId(),
         Transaction_Time: "12:00 PM",
         Transaction_Date: ISODate("2024-03-04"),
+        Transaction_Type: 'Buy',
         Quantity: 10,
         Price: 100.00
     },
@@ -124,6 +125,7 @@ db.Transaction.insertMany([
         Company_Id: getRandomCompanyId(),
         Transaction_Time: "01:30 PM",
         Transaction_Date: ISODate("2024-03-05"),
+        Transaction_Type: 'Buy',
         Quantity: 5,
         Price: 80.00
     },
@@ -133,6 +135,7 @@ db.Transaction.insertMany([
         Company_Id: getRandomCompanyId(),
         Transaction_Time: "03:45 PM",
         Transaction_Date: ISODate("2024-03-06"),
+        Transaction_Type: 'Buy',
         Quantity: 8,
         Price: 120.00
     },
@@ -142,6 +145,7 @@ db.Transaction.insertMany([
         Company_Id: getRandomCompanyId(),
         Transaction_Time: "09:15 AM",
         Transaction_Date: ISODate("2024-03-07"),
+        Transaction_Type: 'Buy',
         Quantity: 15,
         Price: 150.00
     },
@@ -151,6 +155,7 @@ db.Transaction.insertMany([
         Company_Id:getRandomCompanyId(),
         Transaction_Time: "02:30 PM",
         Transaction_Date: ISODate("2024-03-08"),
+        Transaction_Type: 'Buy',
         Quantity: 12,
         Price: 110.00
     }
