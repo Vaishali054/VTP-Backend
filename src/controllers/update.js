@@ -58,8 +58,13 @@ export const updateProfile= async(req,res)=>{
             $set : updateFields
         },{new : true});
 
+        let changedFields = [];
+        for (const key in updateFields) {
+            changedFields.push(key);
+        }
+
         return res.status(200).json({
-            message: "Profile updated Successdully",
+            message: `Profile updated successfully. Changed fields: ${changedFields.join(', ')}`,
             user: updatedUser
         });
     }catch(error){
