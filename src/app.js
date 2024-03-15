@@ -2,6 +2,7 @@ import cors from "cors"
 import express from "express";
 import dotenv from "dotenv";
 import AuthRouter from "./routes/auth.js";
+import StocksRouter from "./routes/stocksList.js";
 //For testing purpose dummy login utilities
 import User from "./models/User.js";
 import jwt from "jsonwebtoken";
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(
     cors({
         origin: "http://localhost:3000"
+        , credentials: true
     })
 );
 
@@ -23,6 +25,8 @@ app.get("/", (req, res) => {
     });
 
 app.use("/auth", AuthRouter)
+app.use("/stocks", StocksRouter)
+   
 //For testing purpose made a dummy login for writing and testing authentication middlewares
 // app.post('/login', async (req, res) => {
 //     const { email_id, password } = req.body;
