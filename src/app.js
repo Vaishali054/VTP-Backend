@@ -6,6 +6,7 @@ import StocksRouter from "./routes/stocksList.js";
 //For testing purpose dummy login utilities
 import User from "./models/User.js";
 import jwt from "jsonwebtoken";
+import RegisterRouter from "./routes/register.js";
 
 //For loading env variables
 dotenv.config();
@@ -25,8 +26,8 @@ app.get("/", (req, res) => {
     });
 
 app.use("/auth", AuthRouter)
+app.use("/register", RegisterRouter)
 app.use("/stocks", StocksRouter)
-   
 //For testing purpose made a dummy login for writing and testing authentication middlewares
 // app.post('/login', async (req, res) => {
 //     const { email_id, password } = req.body;
