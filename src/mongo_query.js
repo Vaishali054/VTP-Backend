@@ -22,7 +22,7 @@ db.Users.insertMany([
         current_balance: 0 
     }
 ])
-
+ 
 
 db.createCollection("Companies")
 
