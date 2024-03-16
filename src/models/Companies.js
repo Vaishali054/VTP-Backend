@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const CompanySchema = new mongoose.Schema({
     max_stock_price: { 
@@ -12,7 +12,8 @@ const CompanySchema = new mongoose.Schema({
     symbol: { 
         type: String, 
         required: true, 
-        unique: true 
+        unique: true,
+        index: true 
     },
     Company_Id: { 
         type: mongoose.Schema.Types.ObjectId, 
@@ -36,4 +37,5 @@ const CompanySchema = new mongoose.Schema({
 
 const Companies = mongoose.model('Companies', CompanySchema);
 
-module.exports = Companies;
+// module.exports = Companies;
+export default Companies; // Export the model for use in other files
