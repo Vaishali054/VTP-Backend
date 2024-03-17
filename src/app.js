@@ -8,8 +8,8 @@ import User from "./models/User.js";
 import jwt from "jsonwebtoken";
 import RegisterRouter from "./routes/register.js";
 import LoginRouter from "./routes/login.js";
-import watchRouter from "./routes/watchRouter";
-import portRouter from "./routes/portRouter";
+import watchRouter from "./routes/watchRouter.js";
+import portRouter from "./routes/portRouter.js";
 
 //For loading env variables
 dotenv.config();
