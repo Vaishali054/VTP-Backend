@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const WatchlistSchema = new mongoose.Schema({
     Company_Id: { 
@@ -17,4 +17,4 @@ const WatchlistSchema = new mongoose.Schema({
 });
 const WatchList = mongoose.model('WatchList', WatchlistSchema);
 
-module.exports = WatchList;
+export default WatchList;
