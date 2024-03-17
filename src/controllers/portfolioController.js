@@ -3,7 +3,7 @@ import UserStocks from '../models/UserStocks.js';
 import Companies from '../models/Companies.js';
 import Portfolio from '../models/Portfolio.js';
 import { authenticateJWT } from "../middlewares/authJWT.js";
-import { ValidateStats } from "../middlewares/authStats.js";
+import { validateUser } from "../middlewares/authStats.js";
 
 export const generatePortfolio = async (req, res) => {
     const userId = req.query.userId;
@@ -16,7 +16,7 @@ export const generatePortfolio = async (req, res) => {
         if (Port_stats.status !== 'public') {
             authenticateJWT(req, res, async () => {
                 console.log("authorized");
-                ValidateStats(req, res, async () => {
+                validateUser(req, res, async () => {
                     const userData = req.body.user;
                     if (!userData) {
                       return res.status(403).json({ message: "Unauthorized" });
