@@ -6,12 +6,12 @@ import {generatePortfolio, togglePortfolioStatus} from "../controllers/portfolio
 const portRouter=Router();
 
 portRouter.get(
-    "/api/portfolio/get",
+    "/get",
     generatePortfolio
 );
 
 portRouter.post(
-    "/api/portfolio/status",
+    "/status",
     authenticateJWT,
     ValidateStats,
     togglePortfolioStatus
