@@ -6,4 +6,3 @@ const HistoryRouter = Router();
 HistoryRouter.get("/", getTransactions);
 
 export default HistoryRouter;
- 

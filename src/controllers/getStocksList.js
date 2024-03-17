@@ -43,19 +43,19 @@ const isMarketOpen = () => {
     const dayOfWeek = now.getDay();
     const hours = now.getHours();
     const minutes = now.getMinutes();
- 
-    return dayOfWeek >= 1 && dayOfWeek <= 5 && 
-        (hours > 9 || (hours === 9 && minutes >= 15)) && 
+
+    return dayOfWeek >= 1 && dayOfWeek <= 5 &&
+        (hours > 9 || (hours === 9 && minutes >= 15)) &&
         (hours < 15 || (hours === 15 && minutes <= 30));
- };
- 
- const scheduleFetchAndUpdateStocks = () => {
+};
+
+const scheduleFetchAndUpdateStocks = () => {
     if (isMarketOpen()) {
         fetchAndUpdateStocks();
     }
- };
- 
- setInterval(scheduleFetchAndUpdateStocks, 60000);
+};
+
+setInterval(scheduleFetchAndUpdateStocks, 60000);
 
 export const getStocksList = async (req, res) => {
     try {

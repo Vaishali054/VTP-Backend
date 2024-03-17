@@ -1,7 +1,7 @@
-import {Router} from "express"
-import {getStocksList} from "../controllers/getStocksList.js";
+import { Router } from "express"
+import { getStocksList } from "../controllers/getStocksList.js";
 
-const StocksRouter=Router();
+const StocksRouter = Router();
 
 StocksRouter.get("/stocksList", getStocksList);
 

@@ -12,7 +12,7 @@ import portRouter from "./routes/portRouter.js";
 dotenv.config();
 
 //Frontend CORS connection
-const app=express();
+const app = express();
 app.use(express.json());
 app.use(
     cors({
@@ -23,7 +23,7 @@ app.use(
 
 app.get("/", (req, res) => {
     res.send("everything goood");
-    });
+});
 
 app.use("/auth", AuthRouter)
 app.use("/register", RegisterRouter)

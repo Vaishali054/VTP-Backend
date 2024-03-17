@@ -76,7 +76,7 @@ export const updateProfile= async(req,res)=>{
 
 };
 export const me = async (req, res) => {
-    const { id: userId, name, email_id } = req.body.user;
+    const { id: userId, name, email_id, current_Balance } = req.body.user;
 
     try {
         
@@ -84,7 +84,8 @@ export const me = async (req, res) => {
             user: {
                 id: userId,
                 name: name,
-                email_id: email_id
+                email_id: email_id, 
+                current_Balance: current_Balance
             }
         });
     } catch(error) {

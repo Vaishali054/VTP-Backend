@@ -1,15 +1,16 @@
 import mongoose from "mongoose";
 
 const PortfolioSchema = new mongoose.Schema({
-    User_Id: { type: mongoose.Schema.Types.ObjectId, 
-        required: true, 
+    User_Id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
         unique: true,
-        ref: 'Users' 
+        ref: 'Users'
     },
-    status: { 
-        type: String, 
+    status: {
+        type: String,
         enum: ['public', 'private'],
-        required: true 
+        required: true
     }
 }, {
     timestamps: true,

@@ -1,13 +1,13 @@
 import { z } from "zod";
 
 export const emailValidation = z.object({
-  
+
   email_id: z
     .string()
     .min(5, { message: "Email must be at least 5 characters long", optional: true })
     .max(50, { message: "Email can't exceed 50 characters", optional: true })
     .email({ message: "Invalid email format", optional: true }),
-  
+
 });
 
 export const passwordValidation = z.object({

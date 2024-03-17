@@ -6,4 +6,3 @@ const LoginRouter = Router();
 LoginRouter.post("/", loginUser);
 
 export default LoginRouter;
- 

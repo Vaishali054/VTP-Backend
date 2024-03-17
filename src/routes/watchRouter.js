@@ -1,9 +1,9 @@
-import {Router} from "express"
+import { Router } from "express"
 import { authenticateJWT } from "../middlewares/authJWT.js"
 import { validateUser } from "../middlewares/authStats.js";
-import {add_to_watchlist, get_watchlist, remove_from_watchlist} from "../controllers/watchlistController.js";
+import { add_to_watchlist, get_watchlist, remove_from_watchlist } from "../controllers/watchlistController.js";
 
-const watchRouter=Router();
+const watchRouter = Router();
 
 watchRouter.get(
     '/get',

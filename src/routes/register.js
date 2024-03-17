@@ -6,4 +6,3 @@ const RegisterRouter = Router();
 RegisterRouter.post("/", registerUser);
 
 export default RegisterRouter;
- 

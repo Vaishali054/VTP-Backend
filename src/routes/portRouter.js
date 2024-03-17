@@ -1,9 +1,9 @@
-import {Router} from "express"
+import { Router } from "express"
 import { authenticateJWT } from "../middlewares/authJWT.js"
 import { validateUser } from "../middlewares/authStats.js";
-import {generatePortfolio, togglePortfolioStatus} from "../controllers/portfolioController.js";
+import { generatePortfolio, togglePortfolioStatus } from "../controllers/portfolioController.js";
 
-const portRouter=Router();
+const portRouter = Router();
 
 portRouter.get(
     "/get",
