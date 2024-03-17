@@ -66,7 +66,7 @@ export const generatePortfolio = async (req, res) => {
 };
 
 export const togglePortfolioStatus = async (req, res) => {
-  const userId = req.query.userId;
+  const userId = req.user.id;
   try {
     const portfolio = await Portfolio.findOne({ User_Id: userId });
     if (!portfolio) {

@@ -5,7 +5,8 @@ import Companies from '../models/Companies.js';
 
 export const add_to_watchlist = async (req, res) => {
     try {
-        const { userId, symbol } = req.body;
+        const {symbol } = req.body;
+        const userId = req.user.id;
         const company = await Companies.findOne({ symbol: symbol });
 
         if (!company) {
@@ -32,10 +33,9 @@ export const add_to_watchlist = async (req, res) => {
       }
 }
 
-
 export const remove_from_watchlist = async (req, res) => {
     try {
-        const { itemId }  = req.query;
+        const { itemId }  = req.body;
         if (!itemId) {
             console.log("empty");
             return res.status(400).json({
@@ -58,9 +58,8 @@ export const remove_from_watchlist = async (req, res) => {
     }
 }
 
-
 export const get_watchlist = async (req, res) => {
-    const { userId } = req.query;
+    const { userId } = req.user.id;
     const objId =  new ObjectId(userId);
     try {
         const userWatchlist = await WatchList.find({ User_Id: objId });
