@@ -6,21 +6,21 @@ import {add_to_watchlist, get_watchlist, remove_from_watchlist} from "../control
 const watchRouter=Router();
 
 watchRouter.get(
-    '/api/watchlist/get',
+    '/get',
     authenticateJWT,
     ValidateStats,
     get_watchlist
 );
 
 watchRouter.post(
-    "/api/watchlist/add",
+    "/add",
     authenticateJWT,
     ValidateStats,
     add_to_watchlist
 );
 
 watchRouter.delete(
-    "/api/watchlist/remove",
+    "/remove",
     authenticateJWT,
     ValidateStats,
     remove_from_watchlist
