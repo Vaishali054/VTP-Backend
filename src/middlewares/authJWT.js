@@ -1,40 +1,23 @@
 import jwt from "jsonwebtoken";
 
-export const authenticateJWT= async(req,res,next)=>{
-    
-    const token=req.headers.authorization
-    ?req.headers.authorization.split(" ")[1]
-    :"";
+export const authenticateJWT = async (req, res, next) => {
+    const token = req.headers.authorization ? req.headers.authorization.split(" ")[1] : "";
 
-    if(!token){
-        res.status(403).json({message: "Unauthorized"});
+    if (!token) {
+        res.status(403).json({ message: "Unauthorized" });
         return;
     }
 
-    try{
-        if (!process.env.JWT_AUTH_SECRET) {
-            throw new Error("JWT_AUTH_SECRET environment variable is not defined.");
-          }
+    try {
+        const data = jwt.verify(token, process.env.JWT_AUTH_SECRET);
 
-          let data;
+        if (typeof data === "string") throw new Error("Invalid jwt data");
 
-          try {
-            data = jwt.verify(token, process.env.JWT_AUTH_SECRET);
-          } catch (err) {
-            res.status(403).json({ message: "Unauthorized" });
-            return;
-          }
-
-          if (typeof data === "string") throw new Error("Invalid jwt data");
-
-          req.body.user={
+        req.body.user = {
             id: data.userId,
-          };
-          next();
-    }catch (err) {
-        res.status(500).json({
-            message: "Internal server error during jwt authentication",
-        });
-        console.log(err);
+        };
+        next();
+    } catch (err) {
+        res.status(403).json({ message: "Unauthorized" });
     }
-}
+};

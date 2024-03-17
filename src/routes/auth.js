@@ -1,7 +1,7 @@
 import {Router} from "express"
 import {updateProfile, deleteProfile} from "../controllers/update.js";
 import { authenticateJWT } from "../middlewares/authJWT.js"
-import { ValidateStats } from "../middlewares/authStats.js";
+import { validateUser } from "../middlewares/authStats.js";
 import { me } from "../controllers/update.js";
 import { getTransactions } from "../controllers/history.js";
 
@@ -10,27 +10,27 @@ const AuthRouter=Router();
 AuthRouter.post(
     "/profile-update",
     authenticateJWT,
-    ValidateStats,
+    validateUser,
     updateProfile
 );
 AuthRouter.put(
     "/delete",
     authenticateJWT,
-    ValidateStats,
+    validateUser,
     deleteProfile
 );
 
 AuthRouter.get(
     "/profile",
     authenticateJWT,
-    ValidateStats,
+    validateUser,
     me
 );
 
 AuthRouter.get(
     "/history",
     authenticateJWT,
-    ValidateStats,
+    validateUser,
     getTransactions
 )
 
