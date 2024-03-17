@@ -8,6 +8,8 @@ import User from "./models/User.js";
 import jwt from "jsonwebtoken";
 import RegisterRouter from "./routes/register.js";
 import LoginRouter from "./routes/login.js";
+import watchRouter from "./routes/watchRouter.js";
+import portRouter from "./routes/portRouter.js";
 
 //For loading env variables
 dotenv.config();
@@ -30,6 +32,8 @@ app.use("/auth", AuthRouter)
 app.use("/register", RegisterRouter)
 app.use("/stocks", StocksRouter)
 app.use("/login", LoginRouter)
+app.use("/watchlist", watchRouter)
+app.use("/portfolio", portRouter)
 //For testing purpose made a dummy login for writing and testing authentication middlewares
 // app.post('/login', async (req, res) => {
 //     const { email_id, password } = req.body;
