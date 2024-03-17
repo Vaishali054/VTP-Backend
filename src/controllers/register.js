@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import Portfolio from "../models/Portfolio.js";
 import bcrypt from "bcrypt";
 
 export const registerUser = async (req, res) => {
@@ -22,6 +23,12 @@ export const registerUser = async (req, res) => {
       password: hashedPassword
     });
     const savedUser = await newUser.save();
+
+    const newPortfolio = new Portfolio({
+      User_Id: savedUser._id, 
+      status: 'private' 
+    });
+    await newPortfolio.save();
 
     res.status(201).json({ message: "User registered successfully", user: savedUser });
   } catch (error) {
