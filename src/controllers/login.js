@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Cookies from 'js-cookie';
 
 export const loginUser = async (req, res) => {
   try {
@@ -23,11 +24,12 @@ export const loginUser = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign(
       { userId: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '6h' }
+      process.env.JWT_AUTH_SECRET,
+      { expiresIn: '7h' }
     );
-
-    // Send token along with the response
+    console.log(token)
+    Cookies.set('token', token, { expires: 7, secure: true });
+    // Respond with token
     res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     console.error(error);

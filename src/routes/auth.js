@@ -3,6 +3,7 @@ import {updateProfile, deleteProfile} from "../controllers/update.js";
 import { authenticateJWT } from "../middlewares/authJWT.js"
 import { ValidateStats } from "../middlewares/authStats.js";
 import { me } from "../controllers/update.js";
+import { getTransactions } from "../controllers/history.js";
 
 const AuthRouter=Router();
 
@@ -25,5 +26,12 @@ AuthRouter.get(
     ValidateStats,
     me
 );
+
+AuthRouter.get(
+    "/history",
+    authenticateJWT,
+    ValidateStats,
+    getTransactions
+)
 
 export default AuthRouter;
