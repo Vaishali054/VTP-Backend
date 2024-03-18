@@ -25,7 +25,9 @@ const fetchAndUpdateStocks = async () => {
                 symbol: stock.symbol,
                 Company_Id: new mongoose.Types.ObjectId(),
                 company_name: stock.identifier,
-                current_Price: stock.lastPrice
+                current_Price: stock.lastPrice,
+                change: stock.change,
+                pChange:stock.pChange
             };
             const options = { upsert: true, new: true };
 
@@ -61,7 +63,6 @@ export const getStocksList = async (req, res) => {
     try {
         const companies = await Companies.find({});
         res.json(companies);
-        console.log("companies fetched", companies[10]);
     } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching companies data');
