@@ -3,7 +3,7 @@ import UserStocks from '../models/UserStocks.js';
 import Companies from '../models/Companies.js';
 import Portfolio from '../models/Portfolio.js';
 import { authenticateJWT } from "../middlewares/authJWT.js";
-import { validateUser } from "../middlewares/authStats.js";
+import { validateUser } from "../middlewares/validateUser.js";
 
 export const generatePortfolio = async (req, res) => {
   const userId = req.query.userId;

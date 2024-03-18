@@ -1,7 +1,7 @@
 import cors from "cors"
 import express from "express";
 import dotenv from "dotenv";
-import AuthRouter from "./routes/auth.js";
+import ProfileRouter from "./routes/profile.js";
 import StocksRouter from "./routes/stocksList.js";
 import RegisterRouter from "./routes/register.js";
 import LoginRouter from "./routes/login.js";
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
     res.send("everything goood");
 });
 
-app.use("/auth", AuthRouter)
+app.use("/auth", ProfileRouter)
 app.use("/register", RegisterRouter)
 app.use("/stocks", StocksRouter)
 app.use("/login", LoginRouter)
