@@ -68,7 +68,6 @@ export const updateProfile= async(req,res)=>{
             user: updatedUser
         });
     }catch(error){
-        console.log(error)
         return res.status(500).json({
             message: "Internal server error"
         });
@@ -89,7 +88,6 @@ export const me = async (req, res) => {
             }
         });
     } catch(error) {
-        console.log(error);
         return res.status(500).json({
             message: "Internal server error"
         });
@@ -98,13 +96,11 @@ export const me = async (req, res) => {
 
 
 export const deleteProfile=async(req,res)=>{
-    console.log(req.body)
     const { id: userId } = req.body.user;
 
     try{
 
         const user= await User.findById(userId);
-        console.log(user)
 
         if(!user){
             return res.status(404).json({
@@ -114,14 +110,12 @@ export const deleteProfile=async(req,res)=>{
         
 
         user.accountStatus = "deleted";
-        console.log(user)
         await user.save();
 
         return res.status(200).json({
             message: "Account deleted successfully",
         });
     }catch(error){
-        console.log(error)
         return res.status(500).json({
             message: "Internal server error"
         });
