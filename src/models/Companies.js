@@ -27,6 +27,14 @@ const CompanySchema = new mongoose.Schema({
     current_Price: {
         type: Number,
         required: true
+    },
+    change:{
+        type:Number,
+        required: true
+    },
+    pChange:{
+        type:Number,
+        required: true
     }
 }, {
     timestamps: true,
