@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import {emailValidation, nameValidation, passwordValidation} from "../validations/update.js";
+import {emailValidation, nameValidation, passwordValidation} from "../validations/validations.js";
 import bcrypt from "bcrypt";
 
 export const updateProfile= async(req,res)=>{
@@ -74,7 +74,7 @@ export const updateProfile= async(req,res)=>{
     }
 
 };
-export const me = async (req, res) => {
+export const fetchProfile = async (req, res) => {
     const { id: userId, name, email_id, current_Balance } = req.body.user;
 
     try {

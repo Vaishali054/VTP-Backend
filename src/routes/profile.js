@@ -1,37 +1,37 @@
 import { Router } from "express"
-import { updateProfile, deleteProfile } from "../controllers/update.js";
+import { updateProfile, deleteProfile } from "../controllers/profile.js";
 import { authenticateJWT } from "../middlewares/authJWT.js"
-import { validateUser } from "../middlewares/authStats.js";
-import { me } from "../controllers/update.js";
+import { validateUser } from "../middlewares/validateUser.js";
+import { fetchProfile } from "../controllers/profile.js";
 import { getTransactions } from "../controllers/history.js";
 
-const AuthRouter = Router();
+const ProfileRouter = Router();
 
-AuthRouter.post(
+ProfileRouter.post(
     "/profile-update",
     authenticateJWT,
     validateUser,
     updateProfile
 );
-AuthRouter.put(
+ProfileRouter.put(
     "/delete",
     authenticateJWT,
     validateUser,
     deleteProfile
 );
 
-AuthRouter.get(
+ProfileRouter.get(
     "/profile",
     authenticateJWT,
     validateUser,
-    me
+    fetchProfile
 );
 
-AuthRouter.get(
+ProfileRouter.get(
     "/history",
     authenticateJWT,
     validateUser,
     getTransactions
 )
 
-export default AuthRouter;
+export default ProfileRouter;
