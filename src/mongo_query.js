@@ -1,5 +1,3 @@
-//use invest_o_rama
-
 db.createCollection("Users")
 db.Users.createIndex({ "User_Id": 1 }, { unique: true })
 db.Users.insertMany([
