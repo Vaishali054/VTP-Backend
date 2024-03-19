@@ -33,11 +33,10 @@ export const generatePortfolio = async (req, res) => {
               Quantity: stock.numberOfStocks,
               CompanyDetails: companyDetails,
               TotalValue: totalValue,
-              status: Port_stats.status,
             });
           }
 
-          res.json({ success: true, portfolio });
+          res.json({ success: true, portfolio: portfolio, status: Port_stats.status});
         });
       });
     } else {
@@ -54,11 +53,10 @@ export const generatePortfolio = async (req, res) => {
           Quantity: stock.numberOfStocks,
           CompanyDetails: companyDetails,
           TotalValue: totalValue,
-          status: Port_stats.status,
         });
       }
 
-      res.json({ success: true, portfolio });
+      res.json({ success: true, portfolio: portfolio, status: Port_stats.status });
     }
   } catch (error) {
     console.error('Error generating portfolio:', error);
