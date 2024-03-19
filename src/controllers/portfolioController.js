@@ -33,6 +33,7 @@ export const generatePortfolio = async (req, res) => {
               Quantity: stock.numberOfStocks,
               CompanyDetails: companyDetails,
               TotalValue: totalValue,
+              status: Port_stats.status,
             });
           }
 
@@ -53,6 +54,7 @@ export const generatePortfolio = async (req, res) => {
           Quantity: stock.numberOfStocks,
           CompanyDetails: companyDetails,
           TotalValue: totalValue,
+          status: Port_stats.status,
         });
       }
 
