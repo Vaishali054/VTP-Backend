@@ -8,6 +8,7 @@ import LoginRouter from "./routes/login.js";
 import watchRouter from "./routes/watchRouter.js";
 import portRouter from "./routes/portRouter.js";
 import LogoutRouter from "./routes/logout.js";
+import HistoryRouter from "./routes/history.js";
 
 //For loading env variables
 dotenv.config();
@@ -32,6 +33,7 @@ app.use("/stocks", StocksRouter)
 app.use("/login", LoginRouter)
 app.use("/watchlist", watchRouter)
 app.use("/portfolio", portRouter)
+app.use("/history", HistoryRouter)
 app.use("/logout", LogoutRouter)
 
 export default app;

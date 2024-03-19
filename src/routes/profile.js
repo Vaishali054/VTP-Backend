@@ -2,7 +2,6 @@ import { Router } from "express"
 import { updateProfile, deleteProfile, fetchProfile } from "../controllers/profile.js";
 import { authenticateJWT } from "../middlewares/authJWT.js"
 import { validateUser } from "../middlewares/validateUser.js";
-import { getTransactions } from "../controllers/history.js";
 
 const ProfileRouter = Router();
 
@@ -25,12 +24,5 @@ ProfileRouter.get(
     validateUser,
     fetchProfile
 );
-
-ProfileRouter.get(
-    "/history",
-    authenticateJWT,
-    validateUser,
-    getTransactions
-)
 
 export default ProfileRouter;

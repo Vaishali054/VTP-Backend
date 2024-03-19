@@ -11,7 +11,7 @@ const TransactionSchema = new mongoose.Schema({
         required: true,
         ref: 'Companies'
     },
-    Transaction_Id: {
+    transactionId: {
         type: mongoose.Schema.Types.ObjectId,
         unique: true,
         required: true
@@ -25,15 +25,23 @@ const TransactionSchema = new mongoose.Schema({
         required: true,
         min: 0
     },
-    transaction_type: {
+    transactionType: {
         type: String,
         enum: ['Buy', 'Sell'],
-        req: true
+        required: true
+    },
+    transactionTime: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
+    transactionDate: {
+        type: Date,
+        required: true
     }
 }, {
     timestamps: true,
     collection: 'Transactions'
 });
 
-// module.exports = mongoose.model('Transaction', TransactionSchema);
 export default mongoose.model('Transaction', TransactionSchema);
