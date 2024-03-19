@@ -5,7 +5,7 @@ const mongodb_url = process.env.MONGO_URL;
 if (!mongodb_url) {
   console.error("MONGODB_URL environment variable is not defined.");
 } else {
-  mongoose.connect(mongodb_url, { dbName: "Invest-o-Rama" });
+  mongoose.connect(mongodb_url, { dbName: "VTP" });
 
   const db = mongoose.connection;
 

@@ -19,7 +19,7 @@ Trace:
 
 npm manifest: 
   {
-    "name": "Invest-o-rama",
+    "name": "VTP",
     "type": "module",
     "version": "1.0.0",
     "main": "index.js",
