@@ -3,7 +3,7 @@
 1. Clone this repository.
 
     ```bash
-    $ git clone https://github.com/JunihersGroup4/TitanTradeBackend.git
+    $ git clone git@github.com:JunihersGroup4/VTPBackend.git
     ```
 
 2. Create the `.env` file using the sample `.env`.
