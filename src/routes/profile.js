@@ -1,8 +1,7 @@
 import { Router } from "express"
-import { updateProfile, deleteProfile } from "../controllers/Profile.js";
+import { updateProfile, deleteProfile, fetchProfile } from "../controllers/profile.js";
 import { authenticateJWT } from "../middlewares/authJWT.js"
 import { validateUser } from "../middlewares/validateUser.js";
-import { fetchProfile } from "../controllers/Profile.js";
 import { getTransactions } from "../controllers/history.js";
 
 const ProfileRouter = Router();
