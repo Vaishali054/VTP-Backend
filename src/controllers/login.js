@@ -27,7 +27,6 @@ export const loginUser = async (req, res) => {
       process.env.JWT_AUTH_SECRET,
       { expiresIn: '7h' }
     );
-    
     Cookies.set('token', token, { expires: 7, secure: true });
     // Respond with token
     res.status(200).json({ message: "Login successful", token });
