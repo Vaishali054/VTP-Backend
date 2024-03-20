@@ -44,7 +44,7 @@ export const buyStock = async (req, res) => {
 
     let userStock = await UserStocks.findOne({
       User_Id: userId,
-      Company_Id: company._id,
+      Company_Id: company.Company_Id,
     });
 
     if (!userStock) {
