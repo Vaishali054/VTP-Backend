@@ -43,14 +43,13 @@ export const buyStock = async (req, res) => {
     const newTransaction = await Transactions.create(transaction);
 
     let userStock = await UserStocks.findOne({
-      User_Id: userId,
       Company_Id: company._id,
     });
 
     if (!userStock) {
       userStock = new UserStocks({
         User_Id: userId,
-        Company_Id: company.Company_Id,
+        Company_Id: company._id,
         numberOfStocks: quantity,
       });
       await UserStocks.create(userStock);

@@ -4,7 +4,6 @@ import Companies from "../models/Companies.js";
 import Portfolio from "../models/Portfolio.js";
 import { authenticateJWT } from "../middlewares/authJWT.js";
 import { validateUser } from "../middlewares/validateUser.js";
-const ObjectId = mongoose.Types.ObjectId;
 
 export const generatePortfolio = async (req, res) => {
   const userId = req.query.userId;
@@ -29,7 +28,7 @@ export const generatePortfolio = async (req, res) => {
 
           for (const stock of userStocks) {
             const companyDetails = await Companies.findOne({
-              Company_Id: stock.Company_Id,
+              _id: stock.Company_Id,
             });
 
             const totalValue =
