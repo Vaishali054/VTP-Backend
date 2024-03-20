@@ -1,39 +1,31 @@
+import { authenticateJWT } from "../middlewares/authJWT.js";
+import { validateUser } from "../middlewares/validateUser.js";
 import Transaction from "../models/Transactions.js";
+import Company from "../models/Companies.js";
 
-const getTransactions = async (req, res) => {
+export const getTransactions = async (req, res) => {
   try {
-    const { id: userId } = req.body.user;
-    const transactions = await Transaction.find({ User_Id: userId }).populate(
-      "Company_Id",
-      "company_name",
-    );
+    authenticateJWT(req, res, async () => {
+      validateUser(req, res, async () => {
+        const userId = req.body.user.id;
 
-    const transactionsWithCompanyName = transactions.map((transaction) => {
-      const {
-        _id,
-        price,
-        quantity,
-        transactionType,
-        Company_Id,
-        transactionTime,
-        transactionDate,
-      } = transaction;
-      return {
-        _id,
-        price,
-        quantity,
-        transactionType,
-        transactionTime,
-        transactionDate,
-        companyName: Company_Id.company_name,
-      };
+        const transactions = await Transaction.find({ user_Id: userId }).populate('_id', 'company_name');
+
+        const formattedTransactions = transactions.map(transaction => ({
+          user_Id: transaction.user_Id,
+          company_name: transaction._id.company_name, 
+          price: transaction.price,
+          quantity: transaction.quantity,
+          transactionType: transaction.transactionType,
+          transactionTime: transaction.transactionTime,
+          transactionDate: transaction.transactionDate,
+        }));
+
+        res.status(200).json(formattedTransactions);
+      });
     });
-
-    res.status(200).json({ status: 200, data: transactionsWithCompanyName });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: 500, message: "Internal server error" });
+    console.error("Error fetching transactions:", error);
+    res.status(500).json({ error: "Error fetching transactions" });
   }
 };
-
-export { getTransactions };
