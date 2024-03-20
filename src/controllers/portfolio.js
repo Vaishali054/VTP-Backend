@@ -28,15 +28,13 @@ export const generatePortfolio = async (req, res) => {
           const portfolio = [];
 
           for (const stock of userStocks) {
-            const companyDetails = await Companies.findOne({ Company_Id: stock.Company_Id });
-           
-            const totalValue = Number(stock.numberOfStocks) * Number(companyDetails.current_Price);
             const companyDetails = await Companies.findOne({
               Company_Id: stock.Company_Id,
             });
 
             const totalValue =
-              stock.numberOfStocks * companyDetails.current_Price;
+              Number(stock.numberOfStocks) *
+              Number(companyDetails.current_Price);
 
             portfolio.push({
               Quantity: stock.numberOfStocks,

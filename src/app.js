@@ -28,14 +28,14 @@ app.get("/", (req, res) => {
   res.send("everything goood");
 });
 
-app.use("/auth", ProfileRouter)
-app.use("/register", RegisterRouter)
-app.use("/stocks", StocksRouter)
-app.use("/login", LoginRouter)
-app.use("/watchlist", watchRouter)
-app.use("/portfolio", portRouter)
-app.use("/history", HistoryRouter)
-app.use("/action", ActionRouter)
-app.use("/logout", LogoutRouter)
+app.use("/auth", ProfileRouter);
+app.use("/register", RegisterRouter);
+app.use("/stocks", StocksRouter);
+app.use("/login", LoginRouter);
+app.use("/watchlist", watchRouter);
+app.use("/portfolio", portRouter);
+app.use("/history", HistoryRouter);
+app.use("/action", ActionRouter);
+app.use("/logout", LogoutRouter);
 
 export default app;
