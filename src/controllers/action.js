@@ -6,7 +6,6 @@ import User from "../models/User.js";
 const ObjectId = mongoose.Types.ObjectId;
 
 export const buyStock = async (req, res) => {
-  
   try {
     const { symbol, quantity } = req.body;
     const { id: userId } = req.body.user;
@@ -60,12 +59,10 @@ export const buyStock = async (req, res) => {
       await userStock.save();
     }
 
-    res
-      .status(200)
-      .json({
-        message: "Stock purchased successfully",
-        transaction: newTransaction,
-      });
+    res.status(200).json({
+      message: "Stock purchased successfully",
+      transaction: newTransaction,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
@@ -125,12 +122,10 @@ export const sellStock = async (req, res) => {
       await stocks.save();
     }
 
-    res
-      .status(200)
-      .json({
-        message: "Stock sold successfully",
-        transaction: newTransaction,
-      });
+    res.status(200).json({
+      message: "Stock sold successfully",
+      transaction: newTransaction,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal server error" });
