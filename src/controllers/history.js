@@ -31,6 +31,8 @@ export const getTransactions = async (req, res) => {
         companyName: company_Id.company_name,
       };
     });
+
+    res.status(200).json({ status: 200, data: transactionsWithCompanyName });
   } catch (error) {
     console.error("Error fetching transactions:", error);
     res.status(500).json({ error: "Error fetching transactions" });
