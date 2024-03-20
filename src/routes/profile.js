@@ -15,6 +15,8 @@ ProfileRouter.post(
 
 ProfileRouter.post(
     "/update-balance",
+    authenticateJWT,
+    validateUser,
     updateBalance
 );
 

@@ -125,10 +125,8 @@ export const deleteProfile = async (req, res) => {
 
 export const updateBalance = async (req, res) => {
     const { id: userId } = req.body.user;
-    console.log(req.body.current_Balance)
 
     try {
-        console.log(userId)
         const user = await User.findById(userId);
 
         if (!user) {
