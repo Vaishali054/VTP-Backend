@@ -37,7 +37,7 @@ export const remove_from_watchlist = async (req, res) => {
     try {
         const { itemId } = req.body;
         if (!itemId) {
-            console.log("empty");
+           
             return res.status(400).json({
                 status: 400,
                 message: "Watchlist_Id should not be empty/null"
@@ -49,7 +49,7 @@ export const remove_from_watchlist = async (req, res) => {
             message: "Company deleted successfully from the Watchlist."
         })
     } catch (err) {
-        console.log(err);
+        
         return res.status(500).json({
             status: 500,
             message: err.message
@@ -78,7 +78,7 @@ export const get_watchlist = async (req, res) => {
             data: enhancedWatchlist
         })
     } catch (err) {
-        console.log(err);
+      
         return res.status(500).json({
             status: 500,
             message: err.message
