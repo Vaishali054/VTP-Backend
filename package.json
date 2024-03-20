@@ -20,5 +20,8 @@
     "zod": "^3.22.4"
   },
   "repository": "https://github.com/JunihersGroup4/VTPBackend.git",
-  "author": "JunihersGroup4"
+  "author": "JunihersGroup4",
+  "devDependencies": {
+    "prettier": "3.2.5"
+  }
 }

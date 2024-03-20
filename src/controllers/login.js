@@ -1,14 +1,16 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 export const loginUser = async (req, res) => {
   try {
     const { email_id, password } = req.body;
 
     if (!email_id || !password) {
-      return res.status(400).json({ message: "Please provide email and password" });
+      return res
+        .status(400)
+        .json({ message: "Please provide email and password" });
     }
 
     const user = await User.findOne({ email_id });
@@ -25,9 +27,9 @@ export const loginUser = async (req, res) => {
     const token = jwt.sign(
       { userId: user._id, email: user.email },
       process.env.JWT_AUTH_SECRET,
-      { expiresIn: '7h' }
+      { expiresIn: "7h" },
     );
-    Cookies.set('token', token, { expires: 7, secure: true });
+    Cookies.set("token", token, { expires: 7, secure: true });
     // Respond with token
     res.status(200).json({ message: "Login successful", token });
   } catch (error) {

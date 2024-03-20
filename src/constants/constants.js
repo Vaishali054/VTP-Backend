@@ -5,5 +5,3 @@ export const CLOSING_HOUR = 15;
 export const CLOSING_MINUTE = 30;
 export const MONDAY = 1;
 export const FRIDAY = 5;
-
-

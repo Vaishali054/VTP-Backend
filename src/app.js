@@ -1,4 +1,4 @@
-import cors from "cors"
+import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
 import ProfileRouter from "./routes/profile.js";
@@ -17,23 +17,23 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(
-    cors({
-        origin: "http://localhost:3000"
-        , credentials: true
-    })
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  }),
 );
 
 app.get("/", (req, res) => {
-    res.send("everything goood");
+  res.send("everything goood");
 });
 
-app.use("/auth", ProfileRouter)
-app.use("/register", RegisterRouter)
-app.use("/stocks", StocksRouter)
-app.use("/login", LoginRouter)
-app.use("/watchlist", watchRouter)
-app.use("/portfolio", portRouter)
-app.use("/history", HistoryRouter)
-app.use("/logout", LogoutRouter)
+app.use("/auth", ProfileRouter);
+app.use("/register", RegisterRouter);
+app.use("/stocks", StocksRouter);
+app.use("/login", LoginRouter);
+app.use("/watchlist", watchRouter);
+app.use("/portfolio", portRouter);
+app.use("/history", HistoryRouter);
+app.use("/logout", LogoutRouter);
 
 export default app;

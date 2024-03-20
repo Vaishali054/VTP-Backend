@@ -2,32 +2,34 @@
 
 1. Clone this repository.
 
-    ```bash
-    $ git clone git@github.com:JunihersGroup4/VTPBackend.git
-    ```
+   ```bash
+   $ git clone git@github.com:JunihersGroup4/VTPBackend.git
+   ```
+
 2. Get into the repository directory.
 
-    ```bash
-    $ cd VTPBackend
-    ```
+   ```bash
+   $ cd VTPBackend
+   ```
 
 3. Create the `.env` file using the sample `.env`.
 
 4. Run the following commands.
 
-    ```bash
-    $ yarn install
-    $ yarn start
-    ```
+   ```bash
+   $ yarn install
+   $ yarn start
+   ```
 
-4. MongoDB setup
+5. MongoDB setup
+
    - Install MongoDB Compass from [here](https://www.mongodb.com/try/download/shell).
    - Select your system configuration.
      <div style="text-align:center">
        <img src="./src/readmeImages/SystemConfig.png" alt="Select system config" style="width:400px;height:300px;">
      </div>
    - Start MongoDB service using the following command in your terminal.
-   
+
      ```bash
      sudo service mongod start
      ```
@@ -38,27 +40,28 @@
   <img src="./src/readmeImages/ERDiagram.png" alt="ER Diagram" style="width:600px;height:400px;">
 </div>
 
-
 # System Diagram
 
 <div style="text-align:center">
   <img src="./src/readmeImages/Flow Diagram (VTP).jpeg" alt="System Diagram" style="width:1300px;height:300px;">
 </div>
 
-
 # External API Used
 
 ## [Latest Stock Price](https://rapidapi.com/suneetk92/api/latest-stock-price/details)
 
 ### Introduction
+
 It is used to fetch latest NSE stock price for 811 stocks.
 Update frequency = 1 min
 Latency = 635ms
 
 ### Authorisation
+
 To use this API, an API key is needed. API key can be generated through the RapidAPI dashboard. Include your API key in the .env file under `RAPIDAPI_KEY` heading.
 
 ### Request Examples
+
 Below is the code snippet for how it can be used.
 
 ```
@@ -82,7 +85,9 @@ const fetchAndUpdateStocks = async () => {
 ```
 
 ### Response Example
+
 Below is how response is received from the api
+
 ```
   {
     symbol: 'WIPRO',
@@ -103,12 +108,7 @@ Below is how response is received from the api
     perChange30d: -4.79
   }
 ```
+
 ### Implementation
+
 We are periodically calling this api during the market hours to fetch real time stock data and storing it in the database.
-
-
-
-
-
-
-
