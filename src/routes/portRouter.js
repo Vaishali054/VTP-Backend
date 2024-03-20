@@ -1,7 +1,7 @@
 import { Router } from "express"
 import { authenticateJWT } from "../middlewares/authJWT.js"
 import { validateUser } from "../middlewares/validateUser.js";
-import { generatePortfolio, togglePortfolioStatus } from "../controllers/portfolioController.js";
+import { generatePortfolio, togglePortfolioStatus } from "../controllers/portfolio.js";
 
 const portRouter = Router();
 
