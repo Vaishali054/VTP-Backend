@@ -45,12 +45,15 @@ const fetchAndUpdateStocks = async () => {
       const update = {
         max_stock_price: stock.dayHigh,
         min_stock_price: stock.dayLow,
-        symbol: stock.symbol,
-        Company_Id: new mongoose.Types.ObjectId(),
-        company_name: stock.identifier,
         current_Price: stock.lastPrice,
         change: stock.change,
         pChange: stock.pChange,
+
+        $setOnInsert: {
+         Company_Id: new mongoose.Types.ObjectId(),
+         symbol: stock.symbol,
+         company_name: stock.identifier,
+       },
       };
       const options = { upsert: true, new: true };
 

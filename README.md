@@ -5,10 +5,15 @@
     ```bash
     $ git clone git@github.com:JunihersGroup4/VTPBackend.git
     ```
+2. Get into the repository directory.
 
-2. Create the `.env` file using the sample `.env`.
+    ```bash
+    $ cd VTPBackend
+    ```
 
-3. Run the following commands.
+3. Create the `.env` file using the sample `.env`.
+
+4. Run the following commands.
 
     ```bash
     $ yarn install
