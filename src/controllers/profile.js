@@ -1,15 +1,15 @@
 import User from "../models/User.js";
-import {emailValidation, nameValidation, passwordValidation} from "../validations/validations.js";
+import { emailValidation, nameValidation, passwordValidation } from "../validations/validations.js";
 import bcrypt from "bcrypt";
 
-export const updateProfile= async(req,res)=>{
+export const updateProfile = async (req, res) => {
     const { id: userId } = req.body.user;
 
-    try{
+    try {
 
-        const user= await User.findById(userId);
+        const user = await User.findById(userId);
 
-        if(!user){
+        if (!user) {
             return res.status(404).json({
                 message: "User not found"
             });
@@ -52,11 +52,11 @@ export const updateProfile= async(req,res)=>{
             }
             updateFields.password = await bcrypt.hash(req.body.password, 11);
         }
-        
 
-        const updatedUser= await User.findByIdAndUpdate(userId, {
-            $set : updateFields
-        },{new : true});
+
+        const updatedUser = await User.findByIdAndUpdate(userId, {
+            $set: updateFields
+        }, { new: true });
 
         let changedFields = [];
         for (const key in updateFields) {
@@ -67,7 +67,7 @@ export const updateProfile= async(req,res)=>{
             message: `Profile updated successfully. Changed fields: ${changedFields.join(', ')}`,
             user: updatedUser
         });
-    }catch(error){
+    } catch (error) {
         return res.status(500).json({
             message: "Internal server error"
         });
@@ -78,16 +78,16 @@ export const fetchProfile = async (req, res) => {
     const { id: userId, name, email_id, current_Balance } = req.body.user;
 
     try {
-        
+
         return res.status(200).json({
             user: {
                 id: userId,
                 name: name,
-                email_id: email_id, 
+                email_id: email_id,
                 current_Balance: current_Balance
             }
         });
-    } catch(error) {
+    } catch (error) {
         return res.status(500).json({
             message: "Internal server error"
         });
@@ -95,19 +95,19 @@ export const fetchProfile = async (req, res) => {
 };
 
 
-export const deleteProfile=async(req,res)=>{
+export const deleteProfile = async (req, res) => {
     const { id: userId } = req.body.user;
 
-    try{
+    try {
 
-        const user= await User.findById(userId);
+        const user = await User.findById(userId);
 
-        if(!user){
+        if (!user) {
             return res.status(404).json({
                 message: "User not found"
             });
         }
-        
+
 
         user.accountStatus = "deleted";
         await user.save();
@@ -115,10 +115,46 @@ export const deleteProfile=async(req,res)=>{
         return res.status(200).json({
             message: "Account deleted successfully",
         });
-    }catch(error){
+    } catch (error) {
         return res.status(500).json({
             message: "Internal server error"
         });
     }
 
+}
+
+export const updateBalance = async (req, res) => {
+    const { id: userId } = req.body.user;
+    console.log(req.body.current_Balance)
+
+    try {
+        console.log(userId)
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found"
+            });
+        }
+
+        const updateFields = {};
+
+        // Check and validate balance
+        if (req.body.current_Balance) {
+            updateFields.current_Balance = req.body.current_Balance;
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(userId, {
+            $set: updateFields
+        }, { new: true });
+
+        return res.status(200).json({
+            message: `Balance updated successfully`,
+            user: updatedUser
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Internal server error"
+        });
+    }
 }
