@@ -3,9 +3,9 @@ import Transaction from "../models/Transactions.js";
 const getTransactions = async (req, res) => {
   try {
     const { id: userId } = req.body.user;
-    const transactions = await Transaction.find({ User_Id: userId }).populate(
-      "Company_Id",
-      "company_name",
+
+    const transactions = await Transaction.find({ user_Id: userId }).populate(
+      "company_Id",
     );
 
     const transactionsWithCompanyName = transactions.map((transaction) => {
@@ -14,7 +14,7 @@ const getTransactions = async (req, res) => {
         price,
         quantity,
         transactionType,
-        Company_Id,
+        company_Id,
         transactionTime,
         transactionDate,
       } = transaction;
@@ -25,7 +25,7 @@ const getTransactions = async (req, res) => {
         transactionType,
         transactionTime,
         transactionDate,
-        companyName: Company_Id.company_name,
+        companyName: company_Id.company_name,
       };
     });
 

@@ -6,22 +6,20 @@ import User from "../models/User.js";
 const ObjectId = mongoose.Types.ObjectId;
 
 export const buyStock = async (req, res) => {
-  console.log("here");
+  
   try {
     const { symbol, quantity } = req.body;
     const { id: userId } = req.body.user;
-    console.log("here2");
+
     const company = await Companies.findOne({ symbol: symbol });
     if (!company) {
       return res.status(404).json({ error: "Company not found" });
     }
-    console.log(userId, symbol, quantity);
 
     const totalPrice = company.current_Price * quantity;
     const user = await User.findOne({ _id: new ObjectId(userId) });
 
     if (!user) {
-      console.log("user not found");
       return res.status(404).json({ error: "User not found" });
     }
 
@@ -31,11 +29,10 @@ export const buyStock = async (req, res) => {
 
     user.current_Balance -= totalPrice;
     await user.save();
-    console.log("here3");
 
     const transaction = {
       user_Id: userId,
-      company_Id: company.Company_Id,
+      company_Id: company._id,
       quantity: quantity,
       price: company.current_Price,
       transactionId: new ObjectId(),
@@ -46,13 +43,11 @@ export const buyStock = async (req, res) => {
 
     const newTransaction = await Transactions.create(transaction);
 
-    console.log("here4");
-
     let userStock = await UserStocks.findOne({
       User_Id: userId,
-      Company_Id: company.Company_Id,
+      Company_Id: company._id,
     });
-    console.log(userStock);
+
     if (!userStock) {
       userStock = new UserStocks({
         User_Id: userId,
