@@ -9,6 +9,7 @@ import watchRouter from "./routes/watchRouter.js";
 import portRouter from "./routes/portRouter.js";
 import LogoutRouter from "./routes/logout.js";
 import HistoryRouter from "./routes/history.js";
+import ActionRouter from "./routes/action.js";
 
 //For loading env variables
 dotenv.config();
@@ -27,13 +28,14 @@ app.get("/", (req, res) => {
   res.send("everything goood");
 });
 
-app.use("/auth", ProfileRouter);
-app.use("/register", RegisterRouter);
-app.use("/stocks", StocksRouter);
-app.use("/login", LoginRouter);
-app.use("/watchlist", watchRouter);
-app.use("/portfolio", portRouter);
-app.use("/history", HistoryRouter);
-app.use("/logout", LogoutRouter);
+app.use("/auth", ProfileRouter)
+app.use("/register", RegisterRouter)
+app.use("/stocks", StocksRouter)
+app.use("/login", LoginRouter)
+app.use("/watchlist", watchRouter)
+app.use("/portfolio", portRouter)
+app.use("/history", HistoryRouter)
+app.use("/action", ActionRouter)
+app.use("/logout", LogoutRouter)
 
 export default app;
