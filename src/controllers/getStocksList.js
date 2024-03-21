@@ -75,7 +75,7 @@ const isMarketOpen = () => {
   const hours = now.getHours();
   const minutes = now.getMinutes();
 
-  return (
+  return ( true ||
     day_of_week >= MONDAY &&
     day_of_week <= FRIDAY &&
     (hours > OPENING_HOUR ||

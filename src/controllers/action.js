@@ -72,16 +72,15 @@ export const sellStock = async (req, res) => {
   try {
     const { symbol, quantity } = req.body;
     const { id: userId } = req.body.user;
-    const company = await Companies.findOne({ symbol: symbol });
 
+    const company = await Companies.findOne({ symbol: symbol });
     if (!company) {
       return res.status(404).json({ error: "Company not found" });
     }
     const stocks = await UserStocks.findOne({
       User_Id: userId,
-      Company_Id: company.Company_Id,
+      Company_Id: company._id,
     });
-    console.log(stocks);
     if (!stocks) {
       return res.status(404).json({ error: "No stocks in possession!" });
     }
@@ -93,26 +92,26 @@ export const sellStock = async (req, res) => {
     }
 
     const totalPrice = company.current_Price * quantity;
-    const user = await User.findOne({ User_Id: userId });
+    const user = await User.findOne({ _id: new ObjectId(userId) });
 
     user.current_Balance += totalPrice;
     await user.save();
 
     const transaction = {
       user_Id: userId,
-      company_Id: company.Company_Id,
+      company_Id: company._id,
       quantity: quantity,
-      price: totalPrice,
-      Transaction_Id: new ObjectId(),
-      transaction_type: "Sell",
-      transactionTime: new Date().toLocaleTimeString(),
-      transactionDate: new Date().toLocaleDateString(),
+      price: company.current_Price,
+      transactionId: new ObjectId(),
+      transactionType: "Sell",
+      transactionTime: new Date(),
+      transactionDate: new Date(),
     };
 
     const newTransaction = await Transactions.create(transaction);
 
     stocks.numberOfStocks -= quantity;
-    if (stocks.quantity == 0) {
+    if (stocks.quantity <= 0) {
       await UserStocks.findOneAndDelete({
         User_Id: userId,
         Company_Id: company.Company_Id,
