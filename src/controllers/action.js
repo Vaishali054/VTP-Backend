@@ -111,10 +111,10 @@ export const sellStock = async (req, res) => {
     const newTransaction = await Transactions.create(transaction);
 
     stocks.numberOfStocks -= quantity;
-    if (stocks.quantity <= 0) {
+    if (stocks.numberOfStocks <= 0) {
       await UserStocks.findOneAndDelete({
         User_Id: userId,
-        Company_Id: company.Company_Id,
+        Company_Id: company._id,
       });
     } else {
       await stocks.save();
