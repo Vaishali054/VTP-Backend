@@ -75,13 +75,14 @@ const isMarketOpen = () => {
   const hours = now.getHours();
   const minutes = now.getMinutes();
 
-  return ( true ||
-    day_of_week >= MONDAY &&
-    day_of_week <= FRIDAY &&
-    (hours > OPENING_HOUR ||
-      (hours === OPENING_HOUR && minutes >= OPENING_MINUTE)) &&
-    (hours < CLOSING_HOUR ||
-      (hours === CLOSING_HOUR && minutes <= CLOSING_MINUTE))
+  return (
+    true ||
+    (day_of_week >= MONDAY &&
+      day_of_week <= FRIDAY &&
+      (hours > OPENING_HOUR ||
+        (hours === OPENING_HOUR && minutes >= OPENING_MINUTE)) &&
+      (hours < CLOSING_HOUR ||
+        (hours === CLOSING_HOUR && minutes <= CLOSING_MINUTE)))
   );
 };
 

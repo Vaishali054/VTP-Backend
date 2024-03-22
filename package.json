@@ -22,6 +22,6 @@
   "repository": "https://github.com/JunihersGroup4/VTPBackend.git",
   "author": "JunihersGroup4",
   "devDependencies": {
-    "prettier": "3.2.5"
+    "prettier": "^3.2.5"
   }
 }

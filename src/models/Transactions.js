@@ -44,7 +44,7 @@ const TransactionSchema = new mongoose.Schema(
   {
     timestamps: true,
     collection: "Transactions",
-  },
+  }
 );
 
 const Transaction = mongoose.model("Transaction", TransactionSchema);

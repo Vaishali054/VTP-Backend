@@ -17,7 +17,7 @@ const PortfolioSchema = new mongoose.Schema(
   {
     timestamps: true,
     collection: "Portfolio",
-  },
+  }
 );
 
 const Portfolio = mongoose.model("Portfolio", PortfolioSchema);

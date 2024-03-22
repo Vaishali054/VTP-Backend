@@ -75,7 +75,7 @@ export const get_watchlist = async (req, res) => {
           ...watchlistItem.toObject(),
           companyDetails,
         };
-      }),
+      })
     );
     return res.status(200).json({
       status: 200,

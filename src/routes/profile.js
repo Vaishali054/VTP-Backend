@@ -14,14 +14,14 @@ ProfileRouter.post(
   "/profile-update",
   authenticateJWT,
   validateUser,
-  updateProfile,
+  updateProfile
 );
 
 ProfileRouter.post(
   "/update-balance",
   authenticateJWT,
   validateUser,
-  updateBalance,
+  updateBalance
 );
 
 ProfileRouter.put("/delete", authenticateJWT, validateUser, deleteProfile);

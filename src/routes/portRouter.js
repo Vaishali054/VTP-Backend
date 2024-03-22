@@ -14,7 +14,7 @@ portRouter.post(
   "/status",
   authenticateJWT,
   validateUser,
-  togglePortfolioStatus,
+  togglePortfolioStatus
 );
 
 export default portRouter;

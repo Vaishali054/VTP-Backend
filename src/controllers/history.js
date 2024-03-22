@@ -1,14 +1,11 @@
-import { authenticateJWT } from "../middlewares/authJWT.js";
-import { validateUser } from "../middlewares/validateUser.js";
 import Transaction from "../models/Transactions.js";
-import Company from "../models/Companies.js";
 
 export const getTransactions = async (req, res) => {
   try {
     const { id: userId } = req.body.user;
 
     const transactions = await Transaction.find({ user_Id: userId }).populate(
-      "company_Id",
+      "company_Id"
     );
 
     const transactionsWithCompanyName = transactions.map((transaction) => {

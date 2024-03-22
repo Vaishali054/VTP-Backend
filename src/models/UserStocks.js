@@ -21,7 +21,7 @@ const UserStocksSchema = new mongoose.Schema(
   {
     timestamps: true,
     collection: "UserStocks",
-  },
+  }
 );
 
 const UserStocks = mongoose.model("UserStocks", UserStocksSchema);

@@ -61,7 +61,7 @@ export const updateProfile = async (req, res) => {
       {
         $set: updateFields,
       },
-      { new: true },
+      { new: true }
     );
 
     let changedFields = [];
@@ -148,7 +148,7 @@ export const updateBalance = async (req, res) => {
       {
         $set: updateFields,
       },
-      { new: true },
+      { new: true }
     );
 
     return res.status(200).json({

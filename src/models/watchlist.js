@@ -16,7 +16,7 @@ const WatchlistSchema = new mongoose.Schema(
   {
     timestamps: true,
     collection: "WatchList",
-  },
+  }
 );
 const WatchList = mongoose.model("WatchList", WatchlistSchema);
 

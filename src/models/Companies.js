@@ -41,12 +41,9 @@ const CompanySchema = new mongoose.Schema(
   {
     timestamps: true,
     collection: "Companies",
-  },
+  }
 );
-
-// module.exports = mongoose.model('Companies', CompanySchema);
 
 const Companies = mongoose.model("Companies", CompanySchema);
 
-// module.exports = Companies;
-export default Companies; // Export the model for use in other files
+export default Companies;
