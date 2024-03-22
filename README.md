@@ -84,32 +84,37 @@ The system design for the VTP (Virtual Trading Platform) website encompasses sev
    - Allows users to view and modify their profile information, including username, email, and password.
    - Provides the option for users to delete their accounts if desired.
 
-6. **Watchlist Management**:
+6. **Buying and Selling**:
+   - Enabled authenticated to purchase stocks from the trade page. 
+   - Checks the validity of the the order, based on user's balance (in case of buying), stocks being in possession (in case of selling), and whether the stocks exists, etc.
+   - Makes an update to user balance, adds/reduces/removes user stocks and adds to transactions in the database
+
+7. **Watchlist Management**:
    - Enables authenticated users to create and manage a watchlist of stocks they wish to monitor.
    - Offers functionalities to add or remove stocks from the watchlist.
 
-7. **Visibility Settings for Portfolio**:
+8. **Visibility Settings for Portfolio**:
    - Allows users to set the visibility of their portfolio as either public or private.
    - Generates a sharable link based on the selected visibility setting.
 
-8. **Database Design**:
+9. **Database Design**:
    - Maintains a relational database structure to store user information, portfolio details, transaction history, watchlists, etc.
    - Ensures efficient data storage and retrieval through proper indexing and normalization techniques.
 
-9. **Frontend Design**:
+10. **Frontend Design**:
    - Develops user-friendly web interfaces for seamless interaction with the platform's functionalities.
    - Adopts responsive design principles to ensure accessibility across various devices and screen sizes.
 
-10. **Backend Implementation**:
+11. **Backend Implementation**:
    - Utilizes a suitable backend programming language and framework (e.g., Node.js with Express.js) to handle server-side logic.
    - Implements API endpoints to support various client requests related to authentication, stock trading, portfolio management, profile handling, and watchlist management.
    - Integrates with external APIs or databases for fetching real-time stock data.
 
-11. **Security Considerations**:
+12. **Security Considerations**:
    - Implements robust security measures such as input validation, encryption of sensitive data, and protection against common web vulnerabilities.
    - Secures data transmission over the network using HTTPS protocol.
 
-12. **Testing and Deployment**:
+13. **Testing and Deployment**:
    - Conducts comprehensive testing to validate the system's functionality, reliability, and security aspects.
    - Deploys the application on a secure server environment, ensuring continuous monitoring and maintenance to uphold its integrity and performance.
 
