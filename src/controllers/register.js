@@ -22,7 +22,7 @@ export const registerUser = async (req, res) => {
         existingUser.accountStatus = "active";
         await existingUser.save();
       } else {
-        return res.status(400).json({ message: "Email already registered" });
+        return res.status(400).json({ message: "Email already in use" });
       }
     } else {
       const hashedPassword = await bcrypt.hash(password, 11);
