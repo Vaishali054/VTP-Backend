@@ -12,6 +12,9 @@ export const generatePortfolio = async (req, res) => {
     const Port_stats = await Portfolio.findOne({
       User_Id: new mongoose.Types.ObjectId(userId),
     });
+    if (!Port_stats) {
+      return res.status(403).json({ message: "User not available!" });
+    }
 
     if (Port_stats.status !== "public") {
       authenticateJWT(req, res, async () => {
