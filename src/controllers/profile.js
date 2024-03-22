@@ -110,14 +110,6 @@ export const deleteProfile = async (req, res) => {
         message: "User not found",
       });
     }
-    const portfolio = await Portfolio.findOne({ User_Id: userId });
-
-    if (!portfolio) {
-      return res.status(404).json({
-        message: "Portfolio not found",
-      });
-    }
-    await portfolio.delete();
 
     user.accountStatus = "deleted";
     await user.save();
