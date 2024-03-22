@@ -3,7 +3,7 @@
 1. Clone this repository.
 
    ```bash
-   $ git clone git@github.com:JunihersGroup4/VTPBackend.git
+   $ git clone https://github.com/JunihersGroup4/VTPBackend.git
    ```
 
 2. Get into the repository directory.

@@ -1,7 +1,22 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const authKeysPath = path.resolve(__dirname, '../utils/authenticationKeys.txt');
+
+const authKeys = fs.readFileSync(authKeysPath, 'utf8').split('\n').reduce((config, line) => {;
+ const [key, value] = line.split('=');
+ if (key && value) {
+    config[key] = value;
+ }
+ return config;
+}, {});
 
 export const loginUser = async (req, res) => {
   try {
@@ -26,8 +41,8 @@ export const loginUser = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign(
       { userId: user._id, email: user.email },
-      process.env.JWT_AUTH_SECRET,
-      { expiresIn: "7h" },
+      authKeys.JWT_AUTH_SECRET,
+      { expiresIn: '7h' }
     );
     Cookies.set("token", token, { expires: 7, secure: true });
     // Respond with token
