@@ -40,6 +40,16 @@
   <img src="./src/readmeImages/ERDiagram.png" alt="ER Diagram" style="width:600px;height:400px;">
 </div>
 
+# Major Entities
+
+**User :**    all basic user data is stored in this entity with editable name, password and email. Account status stores the current status of user's account (active , deleted) to restore user data in case account was deleted earlier(in future).
+**Company :**  basic company details with it’s name, unique symbol and last close price and day high and low
+**Watchlist :** Companies added by user to watchlist for monitoring specific stocks.
+**Transaction :** Stores all the transactions made by a user with the transaction type(buy, sell) and transaction date for further assistance in accurately calculating net profit made by a user.
+**UserStocks :** Keeps track of all stocks currently in user’s possession.
+**Portfolio :** Keeps track of the user's Portfolio and maintains a record for portfolio status.
+
+
 # System Diagram
 
 <div style="text-align:center">
