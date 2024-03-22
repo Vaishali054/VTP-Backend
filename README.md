@@ -37,7 +37,7 @@
 # ER Diagram
 
 <div style="text-align:center">
-  <img src="./src/readmeImages/ERDiagram.png" alt="ER Diagram" style="width:600px;height:400px;">
+  <img src="./src/readmeImages/Database Design.png" alt="ER Diagram" style="width:600px;height:400px;">
 </div>
 
 # Major Entities
