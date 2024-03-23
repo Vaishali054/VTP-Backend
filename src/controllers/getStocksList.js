@@ -10,32 +10,14 @@ import {
   MONDAY,
   FRIDAY,
 } from "../constants/constants.js";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const apiConfigPath = path.resolve(__dirname, "../utils/apiConfig.txt");
-
-const apiConfig = fs
-  .readFileSync(apiConfigPath, "utf8")
-  .split("\n")
-  .reduce((config, line) => {
-    const [key, value] = line.split("=");
-    if (key && value) {
-      config[key] = value;
-    }
-    return config;
-  }, {});
 
 const fetchAndUpdateStocks = async () => {
   const options = {
     method: "GET",
-    url: apiConfig.API_URL,
+    url: process.env.API_URL,
     headers: {
-      "X-RapidAPI-Key": apiConfig.RAPIDAPI_KEY,
-      "X-RapidAPI-Host": apiConfig.RAPIDAPI_HOST,
+      "X-RapidAPI-Key": process.env.RAPIDAPI_KEY,
+      "X-RapidAPI-Host": process.env.RAPIDAPI_HOST,
     },
   };
 
