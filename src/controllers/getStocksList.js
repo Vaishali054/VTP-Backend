@@ -69,7 +69,7 @@ const isMarketOpen = () => {
 };
 
 const scheduleFetchAndUpdateStocks = () => {
-  if (isMarketOpen() || !isMarketOpen()) {
+  if (isMarketOpen()) {
     fetchAndUpdateStocks();
   }
 };
